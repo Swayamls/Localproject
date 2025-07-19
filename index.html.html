@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Beloved Awi ❤️</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://i.imgur.com/JWZQXWw.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #d23669;
+            min-height: 100vh;
+            overflow-x: hidden;
+            touch-action: manipulation;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(210, 54, 105, 0.15);
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            color: #d23669;
+            margin-bottom: 15px;
+            font-size: 22px;
+            text-align: center;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff6b8b, #ff8e9e);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 10px 5px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(210, 54, 105, 0.2);
+            width: 45%;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-no {
+            background: linear-gradient(45deg, #ccc, #ddd);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .heart {
+            font-size: 40px;
+            animation: pulse 1.5s infinite;
+            margin: 15px 0;
+            display: block;
+            text-align: center;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Flip Cards */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 200px;
+            perspective: 1000px;
+            margin: 15px auto;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .flip-card-front {
+            background: linear-gradient(45deg, #ffd6e7, #ffecf1);
+            overflow: hidden;
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flip-card-back {
+            background: linear-gradient(45deg, #d23669, #ff6b8b);
+            color: white;
+            transform: rotateY(180deg);
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Photo Slider */
+        .photo-slider {
+            width: 100%;
+            overflow: hidden;
+            margin: 25px auto;
+            position: relative;
+        }
+
+        .slide-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .slide-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(210, 54, 105, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #prev {
+            left: 5px;
+        }
+
+        #next {
+            right: 5px;
+        }
+
+        /* Love Animations */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart-animation {
+            position: absolute;
+            font-size: 20px;
+            color: #ff6b8b;
+            animation: float-up 6s linear forwards;
+            opacity: 0.7;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Music Control */
+        #music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 100;
+            font-size: 20px;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: #ffe8f0;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff8e9e, #d23669);
+            width: 0%;
+            transition: width 0.5s;
+            border-radius: 10px;
+        }
+
+        /* Final Message */
+        .final-message {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 24px;
+            margin-top: 20px;
+            color: #d23669;
+            text-align: center;
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating Hearts Animation -->
+    <div class="floating-hearts" id="floating-hearts"></div>
+
+    <!-- Music Player -->
+    <div id="music-control" onclick="toggleMusic()">🎵</div>
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <!-- Replace with your preferred song -->
+    </audio>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- Question Container -->
+    <div class="container" id="question-container">
+        <!-- Questions will be inserted here by JavaScript -->
+    </div>
+
+    <!-- Final Message -->
+    <div class="container hidden" id="final-message">
+        <div class="heart">💖</div>
+        <h1>To My Beautiful Awi</h1>
+
+        <div class="final-message">
+            <p>First, I want to say how sorry I am for hurting you. You mean everything to me.</p>
+            <p>Seeing you unwell breaks my heart - I wish I could take all your discomfort away.</p>
+            <p>These memories show how special our love is. Every moment with you is precious.</p>
+            <p>Get well soon, my love. I miss your smile and can't wait to see you feeling better.</p>
+        </div>
+
+        <!-- Photo Slider -->
+        <div class="photo-slider">
+            <button class="slide-nav" id="prev">❮</button>
+            <button class="slide-nav" id="next">❯</button>
+            <div class="slide-container" id="slide-container">
+                <!-- Slides will be added by JavaScript -->
+            </div>
+        </div>
+
+        <p class="signature">Forever Yours,<br>Swayam</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // Romantic Questions (10 total)
+        const questions = [
+            {
+                question: "Awi, is it true you're the most beautiful girl in my world?",
+                yesText: "Of course!",
+                noText: "No way",
+                yesResponse: "I knew you'd agree! You take my breath away every day 😍",
+                noResponse: "Let me remind you how gorgeous you are! Click YES",
+                forceYes: true
+            },
+            {
+                question: "Do you know you make my heart race?",
+                yesText: "I do now",
+                noText: "Prove it",
+                yesResponse: "Just like that ❤️ *heart flutters*",
+                noResponse: "Come closer and feel it! Click YES",
+                forceYes: true
+            },
+            {
+                question: "Have you forgiven me for being imperfect?",
+                yesText: "Of course",
+                noText: "Working on it",
+                yesResponse: "Thank you for loving me despite my flaws. I'll keep improving for you 💕",
+                noResponse: "I'll earn your forgiveness every day! Click YES",
+                forceYes: false
+            },
+            {
+                question: "Remember our first date? Wasn't it magical?",
+                yesText: "Perfect moment",
+                noText: "Can't recall",
+                yesResponse: "I replay that memory in my mind like my favorite song 🎶",
+                noResponse: "Let's recreate it to refresh your memory! Click YES",
+                forceYes: true
+            },
+            {
+                question: "Do you believe I think about you every day?",
+                yesText: "I know you do",
+                noText: "Doubt it",
+                yesResponse: "You're my first thought each morning and last at night 🌙",
+                noResponse: "I'll prove it to you every day! Click YES",
+                forceYes: true
+            },
+            {
+                question: "Is your heart feeling warmer now?",
+                yesText: "Getting there",
+                noText: "Still cold",
+                yesResponse: "Let me keep warming it with my love 🔥",
+                noResponse: "I won't stop until it's glowing! Click YES",
+                forceYes: true
+            },
+            {
+                question: "Would you let me take care of you when you're unwell?",
+                yesText: "Yes please",
+                noText: "Maybe",
+                yesResponse: "I'd make you soup and hold you until you feel better 🤗",
+                noResponse: "I'll wait until you're ready! Click YES",
+                forceYes: true
+            },
+            {
+                question: "Do you know you're my favorite person?",
+                yesText: "Tell me more",
+                noText: "Really?",
+                yesResponse: "No one else makes me feel this way - you're one of a kind 💫",
+                noResponse: "Let me show you how special you are! Click YES",
+                forceYes: true
+            },
+            {
+                question: "Would you believe me if I said I'm crazy about you?",
+                yesText: "I believe you",
+                noText: "Doubt it",
+                yesResponse: "Crazier every single day - and I love it! 😘",
+                noResponse: "I'll make sure you never doubt it again! Click YES",
+                forceYes: true
+            },
+            {
+                question: "Ready to see how much I cherish you?",
+                yesText: "Yes!",
+                noText: "Not yet",
+                yesResponse: "Here comes my heart...",
+                noResponse: "Don't keep me waiting! Click YES",
+                forceYes: true
+            }
+        ];
+
+        // Photo memories (replace with your images and messages)
+        const memories = [
+            {
+                image: "pic2.jpeg",
+                message: "Every moment with you feels like a beautiful dream I never want to wake up from. You’re not just a part of my life — you are my life. I’ll love you today, tomorrow, and always"
+            },
+            {
+                image: "pic1.jpeg",
+                message: "Whenever I see you smile, the whole world feels right. You calm my storms, lift my heart, and make even the darkest days brighter. I promise to protect that smile forever."
+            },
+            {
+                image: "pic3.jpeg",
+                message: "Loving you has made me a better person. You believe in me, support me, and love me in ways I never thought possible. I’ll spend my life giving you the same love, every single day."
+            },
+            {
+                image: "pic4.jpeg",
+                message: "Whenever I see you smile, the whole world feels right. You calm my storms, lift my heart, and make even the darkest days brighter. I promise to protect that smile forever."
+            },
+            {
+                image: "pic5.jpeg",
+                message: "You are my person — my love, my best friend, my everything. I can’t promise life will always be easy, but I promise I’ll always choose you, care for you, and love you with all I am."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let currentSlide = 0;
+        const questionContainer = document.getElementById('question-container');
+        const finalMessage = document.getElementById('final-message');
+        const progressBar = document.getElementById('progress-bar');
+        const slideContainer = document.getElementById('slide-container');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        const heartsContainer = document.getElementById('floating-hearts');
+        const music = document.getElementById('bg-music');
+
+        // Create floating hearts
+        function createHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart-animation';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heart.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                heartsContainer.appendChild(heart);
+
+                // Remove heart after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }, 300);
+        }
+
+        // Music control
+        function toggleMusic() {
+            if (music.paused) {
+                music.play()
+                    .then(() => {
+                        document.getElementById('music-control').textContent = '🔊';
+                    })
+                    .catch(() => alert("Tap the music note to play our song ❤️"));
+            } else {
+                music.pause();
+                document.getElementById('music-control').textContent = '🎵';
+            }
+        }
+
+        // Initialize music after first interaction
+        function initMusic() {
+            music.volume = 0.3; // Set to 30% volume
+            document.removeEventListener('click', initMusic);
+        }
+
+        // Display current question
+        function showQuestion(index) {
+            const q = questions[index];
+            progressBar.style.width = ((index + 1) / questions.length * 100) + '%';
+
+            questionContainer.innerHTML = `
+                <h1>${q.question}</h1>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="btn" onclick="answerQuestion(true)">${q.yesText}</button>
+                    <button class="btn btn-no" onclick="answerQuestion(false)">${q.noText}</button>
+                </div>
+            `;
+        }
+
+        // Handle answers
+        function answerQuestion(isYes) {
+            const q = questions[currentQuestion];
+
+            if (!isYes && q.forceYes) {
+                questionContainer.innerHTML = `
+                    <h1>${q.noResponse}</h1>
+                    <button class="btn" onclick="showQuestion(currentQuestion)" style="margin: 20px auto; display: block;">Try Again</button>
+                `;
+                return;
+            }
+
+            if (isYes) {
+                // Show response before next question
+                questionContainer.innerHTML = `
+                    <h1>${q.yesResponse}</h1>
+                    <div class="heart">${currentQuestion === questions.length - 1 ? '💍' : '❤️'}</div>
+                    <button class="btn" onclick="nextQuestion()" style="margin: 20px auto; display: block;">Continue</button>
+                `;
+
+                // Special effects for last question
+                if (currentQuestion === questions.length - 1) {
+                    confetti({
+                        particleCount: 150,
+                        spread: 70,
+                        origin: { y: 0.6 }
+                    });
+                }
+            } else {
+                questionContainer.innerHTML = `
+                    <h1>${q.noResponse}</h1>
+                    <button class="btn" onclick="nextQuestion()" style="margin: 20px auto; display: block;">Continue Anyway</button>
+                `;
+            }
+        }
+
+        // Move to next question or show final message
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                showQuestion(currentQuestion);
+            } else {
+                showFinalMessage();
+            }
+        }
+
+        // Show final message with photo slider
+        function showFinalMessage() {
+            questionContainer.classList.add('hidden');
+            finalMessage.classList.remove('hidden');
+
+            // Create slides
+            memories.forEach((memory, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.innerHTML = `
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="${memory.image}" alt="Our Memory ${index + 1}">
+                            </div>
+                            <div class="flip-card-back">
+                                <p>"${memory.message}"</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                slideContainer.appendChild(slide);
+            });
+
+            updateSlider();
+
+            // Big celebration!
+            confetti({
+                particleCount: 200,
+                spread: 100,
+                origin: { y: 0.6 }
+            });
+        }
+
+        // Photo slider functions
+        function updateSlider() {
+            slideContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % memories.length;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + memories.length) % memories.length;
+            updateSlider();
+        }
+
+        // Initialize
+        window.onload = function () {
+            createHearts();
+            showQuestion(0);
+
+            // Set up event listeners
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            document.addEventListener('click', initMusic);
+
+            // Make flip cards work on touch devices
+            document.addEventListener('touchstart', function () { }, { passive: true });
+        };
+    </script>
+</body>
+
+</html>
